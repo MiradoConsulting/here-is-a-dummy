@@ -24,7 +24,7 @@ public class Dumbot extends Robot {
     while (true) {
       // Replace the next 4 lines with any behavior you would like
       if (shouldMove) {
-        ahead(30.0);
+        ahead(70.0);
       }
     }
   }
