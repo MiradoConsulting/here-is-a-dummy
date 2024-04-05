@@ -44,6 +44,7 @@ public class Dumbot extends Robot {
    * onHitByBullet: What to do when you're hit by a bullet
    */
   public void onHitByBullet(HitByBulletEvent e) {
+    this.turnGunRight(360);
     this.turnLeft(30.0);
     this.ahead(20.0);
   }
