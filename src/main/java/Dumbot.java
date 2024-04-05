@@ -1,7 +1,8 @@
 import robocode.*;
 //import java.awt.Color;
 import static robocode.util.Utils.normalRelativeAngleDegrees;
-
+import robocode.*;
+import java.awt.Color;
 // API help : http://robocode.sourceforge.net/docs/robocode/robocode/Robot.html
 
 /**
