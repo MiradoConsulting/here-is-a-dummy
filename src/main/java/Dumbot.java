@@ -7,6 +7,7 @@ import robocode.*;
  * Dumbot - a robot by (Panos)
  */
 public class Dumbot extends Robot {
+  private boolean shouldMove = true;
 
   /**
    * run: Dumbot's default behavior
@@ -20,23 +21,19 @@ public class Dumbot extends Robot {
     // setColors(Color.red,Color.blue,Color.green); // body,gun,radar
 
     // Robot main loop
-//    while (true) {
+    while (true) {
       // Replace the next 4 lines with any behavior you would like
-
-//      turnRight(10.0);
-//      ahead(30.0);
-//			ahead(100);
-//			turnGunRight(360);
-//			back(100);
-//      turnGunRight(360);
-//    }
+      if (shouldMove) {
+        ahead(30.0);
+      }
+    }
   }
 
   /**
    * onScannedRobot: What to do when you see another robot
    */
   public void onScannedRobot(ScannedRobotEvent e) {
-    this.ahead(10.0);
+    this.shouldMove = false;
     this.fire(1.0);
   }
 
@@ -44,6 +41,7 @@ public class Dumbot extends Robot {
    * onHitByBullet: What to do when you're hit by a bullet
    */
   public void onHitByBullet(HitByBulletEvent e) {
+    this.shouldMove = true;
     this.turnGunRight(360);
     this.turnLeft(30.0);
     this.ahead(20.0);
@@ -62,6 +60,8 @@ public class Dumbot extends Robot {
    */
   public void onHitWall(HitWallEvent e) {
     // Replace the next line with any behavior you would like
-    back(20);
+    this.shouldMove = true;
+    back(10);
+    this.turnRight(90)
   }
 }
