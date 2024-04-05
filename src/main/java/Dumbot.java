@@ -1,5 +1,6 @@
 import robocode.*;
 //import java.awt.Color;
+import static robocode.util.Utils.normalRelativeAngleDegrees;
 
 // API help : http://robocode.sourceforge.net/docs/robocode/robocode/Robot.html
 
@@ -7,33 +8,42 @@ import robocode.*;
  * Dumbot - a robot by (Panos)
  */
 public class Dumbot extends Robot {
-  private boolean shouldMove = true;
+  private boolean shouldMove = false;
 
   /**
    * run: Dumbot's default behavior
    */
   public void run() {
+    setBodyColor(Color.green);
+    setGunColor(Color.red);
+    setRadarColor(Color.yellow);
+    setBulletColor(Color.yellow);
     // Initialization of the robot should be put here
 
+    turnRight(normalRelativeAngleDegrees(0 - getHeading()));
+    ahead(5000);
+    turnLeft(90);
     // After trying out your robot, try uncommenting the import at the top,
     // and the next line:
 
     // setColors(Color.red,Color.blue,Color.green); // body,gun,radar
 
     // Robot main loop
-    while (true) {
+//    while (true) {
       // Replace the next 4 lines with any behavior you would like
-      if (shouldMove) {
-        ahead(70.0);
-      }
-    }
+//      if (shouldMove) {
+//        ahead(30.0);
+//      }
+//    }
   }
 
   /**
    * onScannedRobot: What to do when you see another robot
    */
   public void onScannedRobot(ScannedRobotEvent e) {
-    this.shouldMove = false;
+    if (robotDistance > 400) {
+      return;
+    }
     this.fire(1.0);
   }
 
@@ -41,17 +51,12 @@ public class Dumbot extends Robot {
    * onHitByBullet: What to do when you're hit by a bullet
    */
   public void onHitByBullet(HitByBulletEvent e) {
-    this.shouldMove = true;
-    this.turnGunRight(360);
-    this.turnLeft(30.0);
-    this.ahead(20.0);
+    ahead(5000);
+    turnLeft(90);
   }
 
   public void onBulletMissed(BulletMissedEvent var1) {
-
-    turnGunRight(360);
     this.scan();
-
   }
 
 
@@ -60,8 +65,7 @@ public class Dumbot extends Robot {
    */
   public void onHitWall(HitWallEvent e) {
     // Replace the next line with any behavior you would like
-    this.shouldMove = true;
-    back(10);
-    this.turnRight(90)
+//    back(10);
+//    this.turnRight(90)
   }
 }
