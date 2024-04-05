@@ -22,9 +22,12 @@ public class Dumbot extends Robot
 		// Robot main loop
 		while(true) {
 			// Replace the next 4 lines with any behavior you would like
-			ahead(100);
-			turnGunRight(360);
-			back(100);
+
+			turnRight(10.0);
+			ahead(30.0);
+//			ahead(100);
+//			turnGunRight(360);
+//			back(100);
 			turnGunRight(360);
 		}
 	}
@@ -33,18 +36,26 @@ public class Dumbot extends Robot
 	 * onScannedRobot: What to do when you see another robot
 	 */
 	public void onScannedRobot(ScannedRobotEvent e) {
-		// Replace the next line with any behavior you would like
-		fire(1);
+		if (var1.getDistance() > 100.0) {
+			this.fire(1.0);
+		} else {
+			this.fire(2.0);
+		}
 	}
 
 	/**
 	 * onHitByBullet: What to do when you're hit by a bullet
 	 */
 	public void onHitByBullet(HitByBulletEvent e) {
-		// Replace the next line with any behavior you would like
-		back(10);
+		this.turnLeft(30.0);
+		this.ahead(20.0);
 	}
-	
+
+	public void onBulletMissed(BulletMissedEvent var1) {
+		this.scan();
+	}
+
+
 	/**
 	 * onHitWall: What to do when you hit a wall
 	 */
