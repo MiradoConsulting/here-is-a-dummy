@@ -14,10 +14,6 @@ public class Dumbot extends Robot {
    * run: Dumbot's default behavior
    */
   public void run() {
-    setBodyColor(Color.green);
-    setGunColor(Color.red);
-    setRadarColor(Color.yellow);
-    setBulletColor(Color.yellow);
     // Initialization of the robot should be put here
 
     turnRight(normalRelativeAngleDegrees(0 - getHeading()));
