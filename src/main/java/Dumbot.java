@@ -6,61 +6,61 @@ import robocode.*;
 /**
  * Dumbot - a robot by (Panos)
  */
-public class Dumbot extends Robot
-{
-	/**
-	 * run: Dumbot's default behavior
-	 */
-	public void run() {
-		// Initialization of the robot should be put here
+public class Dumbot extends Robot {
 
-		// After trying out your robot, try uncommenting the import at the top,
-		// and the next line:
+  /**
+   * run: Dumbot's default behavior
+   */
+  public void run() {
+    // Initialization of the robot should be put here
 
-		// setColors(Color.red,Color.blue,Color.green); // body,gun,radar
+    // After trying out your robot, try uncommenting the import at the top,
+    // and the next line:
 
-		// Robot main loop
-		while(true) {
-			// Replace the next 4 lines with any behavior you would like
+    // setColors(Color.red,Color.blue,Color.green); // body,gun,radar
 
-			turnRight(10.0);
-			ahead(30.0);
+    // Robot main loop
+//    while (true) {
+      // Replace the next 4 lines with any behavior you would like
+
+//      turnRight(10.0);
+//      ahead(30.0);
 //			ahead(100);
 //			turnGunRight(360);
 //			back(100);
-			turnGunRight(360);
-		}
-	}
+//      turnGunRight(360);
+//    }
+  }
 
-	/**
-	 * onScannedRobot: What to do when you see another robot
-	 */
-	public void onScannedRobot(ScannedRobotEvent e) {
-		if (e.getDistance() > 100.0) {
-			this.fire(1.0);
-		} else {
-			this.fire(2.0);
-		}
-	}
+  /**
+   * onScannedRobot: What to do when you see another robot
+   */
+  public void onScannedRobot(ScannedRobotEvent e) {
+    this.ahead(10.0);
+    this.fire(1.0);
+  }
 
-	/**
-	 * onHitByBullet: What to do when you're hit by a bullet
-	 */
-	public void onHitByBullet(HitByBulletEvent e) {
-		this.turnLeft(30.0);
-		this.ahead(20.0);
-	}
+  /**
+   * onHitByBullet: What to do when you're hit by a bullet
+   */
+  public void onHitByBullet(HitByBulletEvent e) {
+    this.turnLeft(30.0);
+    this.ahead(20.0);
+  }
 
-	public void onBulletMissed(BulletMissedEvent var1) {
-		this.scan();
-	}
+  public void onBulletMissed(BulletMissedEvent var1) {
+
+    turnGunRight(360);
+    this.scan();
+
+  }
 
 
-	/**
-	 * onHitWall: What to do when you hit a wall
-	 */
-	public void onHitWall(HitWallEvent e) {
-		// Replace the next line with any behavior you would like
-		back(20);
-	}	
+  /**
+   * onHitWall: What to do when you hit a wall
+   */
+  public void onHitWall(HitWallEvent e) {
+    // Replace the next line with any behavior you would like
+    back(20);
+  }
 }
