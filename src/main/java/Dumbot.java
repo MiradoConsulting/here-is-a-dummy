@@ -37,7 +37,7 @@ public class Dumbot extends Robot {
    * onScannedRobot: What to do when you see another robot
    */
   public void onScannedRobot(ScannedRobotEvent e) {
-    if (robotDistance > 400) {
+    if (e.getDistance() > 400) {
       return;
     }
     this.fire(1.0);
